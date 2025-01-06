@@ -1,20 +1,20 @@
-/* ==============================
-   1. CSS 변수 (Style Guide 기반)
-   ============================== */
+/* ===============================
+   1. CSS 변수 (색상, 폰트 등)
+   =============================== */
    :root {
     /* Primary */
     --dark-cyan: hsl(158, 36%, 37%);
     --cream: hsl(30, 38%, 92%);
-  
+    
     /* Neutral */
     --very-dark-blue: hsl(212, 21%, 14%);
     --dark-grayish-blue: hsl(228, 12%, 48%);
     --white: hsl(0, 0%, 100%);
   }
   
-  /* ==============================
-     2. 기본 스타일 리셋
-     ============================== */
+  /* ===============================
+     2. 기본 리셋 & 바디
+     =============================== */
   * {
     margin: 0;
     padding: 0;
@@ -22,8 +22,8 @@
   }
   
   body {
-    font-family: 'Montserrat', sans-serif; /* Base 폰트: Montserrat */
-    font-size: 14px; /* Style Guide: 본문 14px */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
     background-color: var(--cream);
     color: var(--very-dark-blue);
     display: flex;
@@ -32,25 +32,26 @@
     min-height: 100vh;
   }
   
-  /* ==============================
-     3. 카드 레이아웃 (데스크톱 기준)
-     ============================== */
+  /* ===============================
+     3. 카드 (Desktop 기본)
+     =============================== */
   .card {
-    display: flex;
-    width: 600px; /* 예시: 데스크톱에서 적절한 폭 */
-    background-color: var(--white);
+    display: flex;           /* 2단 레이아웃 */
+    width: 60vw;             /* 예시: 데스크톱에서 60% 정도 */
+    max-width: 800px;        /* 최대 폭 제한 */
     border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }
   
-  /* 왼쪽: 이미지 */
+  /* 이미지 섹션 (Desktop) */
   .card-image {
     width: 50%;
     background: url("image-product-desktop.jpg") no-repeat center/cover;
   }
   
-  /* 오른쪽: 텍스트 */
+  /* 텍스트 섹션 (Desktop) */
   .card-content {
     width: 50%;
     padding: 2rem;
@@ -68,34 +69,34 @@
   }
   
   .title {
-    font-family: 'Fraunces', serif; /* 제목 폰트: Fraunces */
-    font-weight: 700; /* Style Guide: 700 */
-    font-size: 1.7rem;
+    font-family: 'Fraunces', serif; 
+    font-weight: 700;
+    font-size: 1.8rem;
     line-height: 1.2;
-    color: var(--very-dark-blue);
   }
   
   .description {
     color: var(--dark-grayish-blue);
-    line-height: 1.5;
+    line-height: 1.4;
+    font-size: 0.9rem;
   }
   
   .pricing {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
   }
   
   .price {
     font-family: 'Fraunces', serif;
-    color: var(--dark-cyan);
-    font-size: 2rem;
     font-weight: 700;
+    font-size: 2rem;
+    color: var(--dark-cyan);
   }
   
   .original-price {
-    font-size: 0.9rem;
     text-decoration: line-through;
+    font-size: 0.9rem;
     color: var(--dark-grayish-blue);
   }
   
@@ -113,24 +114,26 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
+  
+  .add-to-cart:hover {
+    background-color: hsl(158, 36%, 30%);
   }
   
-  /* ==============================
-     4. 반응형(모바일 375px 이하)
-     ============================== */
-  @media (max-width: 375px) {
+  /* ===============================
+     4. 모바일 디자인 (단일 컬럼)
+     =============================== */
+  @media (max-width: 600px) {
+    /* 카드 전체를 단일 컬럼으로 */
     .card {
       flex-direction: column;
       width: 90%;
       max-width: 375px;
-      margin: 1rem;
     }
   
     .card-image {
       width: 100%;
-      height: 240px;
-      background: url("image-product-mobile.jpg");
+      height: 240px; /* 모바일에서 필요한 경우 높이 지정 */
+      background: url("image-product-mobile.jpg") no-repeat center/cover;
     }
   
     .card-content {
